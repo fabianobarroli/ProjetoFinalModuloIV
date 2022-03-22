@@ -57,7 +57,7 @@ inserirMatricula = (novaMatricula) =>{
 
 delecaoMatricula = (cpf_aluno)=>{
     return new Promise ((resolve, reject)=>{
-        this.bdm.run('DELETE * FROM MATRICULA WHERE CPF_ALUNO = ?', cpf_aluno, (error)=>{
+        this.bdm.run('DELETE FROM MATRICULA WHERE CPF_ALUNO = ?', cpf_aluno, (error)=>{
             if(error){
                 reject({
                     "mensagem": error.message

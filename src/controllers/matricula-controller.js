@@ -40,7 +40,7 @@ const matriculaController = (app, bdm) =>{
 
     })
 
- app.delete('/matricula//cpf_aluno/:cpf_aluno', async (req, res)=>{
+ app.delete('/matricula/cpf_aluno/:cpf_aluno', async (req, res)=>{
      try {
          const cpf = await req.params.cpf_aluno
          matriculaDAO.delecaoMatricula(cpf_aluno)
