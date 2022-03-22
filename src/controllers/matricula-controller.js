@@ -1,6 +1,6 @@
 import Matricula from "../models/Matricula.js";
 import MatriculaDAO from "../DAO/MatriculaDAO.js";
-import bdm from "../database/db-sigint-export.js";
+
 
 const matriculaController = (app, bdm) =>{
     const matriculaDAO = new MatriculaDAO(bdm)
