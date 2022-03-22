@@ -51,15 +51,22 @@ const matriculaController = (app, bdm) =>{
  })
 
  app.put('/matricula/cpf_aluno/:cpf_aluno', async (req, res)=>{
+    const cpf = req.params.cpf_aluno
     const body = req.body
     try {
-        const novaMatricula = await new Matricula(body.nome_do_aluno, body.nome_do_pai, body.nome_da_mae, body.cpf_aluno, body.carteira_de_identidade, body.matricula_certidao_nas_ou_cas,
+        const atualizaMatricula = await new Matricula(body.nome_do_aluno, body.nome_do_pai, body.nome_da_mae, body.cpf_aluno, body.carteira_de_identidade, body.matricula_certidao_nas_ou_cas,
             body.endereco, body.telefone_residencial, body.celular, body.telefone_pai, body.telefone_mae, body.email_estudante, body.email_responsavel)
-            matriculaDAO.inserirMatricula(novaMatricula)
-            res.json(resposta)
+            matriculaDAO.atualizaMatricula(cpf_aluno, atualizaMatricula)
+            .then((resposta)=>{
+                res.json(resposta)
+            })
+            .catch((erro)=>{
+                res.json(erro)
+            })
+            
     } catch (erro) {
         res.json(erro)
     }
-
 })
 }
+export default matriculaController
