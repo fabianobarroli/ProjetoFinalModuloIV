@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server.js",
+    "databese": "node ./src/databese/create-bdm-populate.js",
     "dev": "nodemon ./server.js"
   },
   "repository": {
@@ -30,5 +31,8 @@
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2"
+  },
+  "engines": {
+    "node": "16"
   }
 }
