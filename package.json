@@ -1,9 +1,27 @@
 {
+  "name": "projetofinalmoduloiv",
+  "version": "1.0.0",
+  "description": "Projeto de Final de Módulo IV",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabianobarroli/ProjetoFinalModuloIV.git"
+  },
+  "author": "Fabiano Barros de Oliveira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fabianobarroli/ProjetoFinalModuloIV/issues"
+  },
+  "homepage": "https://github.com/fabianobarroli/ProjetoFinalModuloIV#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.3",
+    "middlewares": "^0.1.1",
     "node-fetch": "^3.2.3",
-    "sqlite3": "^5.0.0",
-    "cors": "^2.8.5"
+    "sqlite3": "^5.0.0"
   },
   "devDependencies": {
     "jest": "^27.5.1",
