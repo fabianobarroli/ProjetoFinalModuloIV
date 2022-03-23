@@ -4,14 +4,17 @@
   "description": "Projeto de Final de Módulo IV",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server.js",
+    "dev": "nodemon ./server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fabianobarroli/ProjetoFinalModuloIV.git"
   },
   "author": "Fabiano Barros de Oliveira",
-  "license": "MIT",
+  "license": "ISC",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/fabianobarroli/ProjetoFinalModuloIV/issues"
   },
