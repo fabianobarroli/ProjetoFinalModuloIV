@@ -1,9 +1,9 @@
-import { sqlite3 } from "sqlite3";
+import sqlite3 from "sqlite3";
 sqlite3.verbose()
 import {dirname} from 'path';
 import { fileURLToPath } from "url";
-const filePath = dirname(fileURLToPath(import.meta.url)) + '/bancodedadosmatricula.db';
-const bdm = new sqlite3.Database('./bancodedadosmatricula.db');
+const filePath = dirname(fileURLToPath(import.meta.url)) + '/bancoDeDadosMatricula.db';
+const bdm = new sqlite3.Database(filePath);
 
 const MATRICULA_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "MATRICULA" (

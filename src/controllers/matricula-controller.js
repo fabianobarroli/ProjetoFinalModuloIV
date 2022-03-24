@@ -1,5 +1,5 @@
-import Matricula from "../models/Matricula.js";
-import MatriculaDAO from "../DAO/MatriculaDAO.js";
+import Matricula from ".src/models/Matricula.js";
+import MatriculaDAO from ".src/DAO/MatriculaDAO.js";
 
 
 const matriculaController = (app, bdm) =>{
