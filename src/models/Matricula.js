@@ -1,7 +1,7 @@
 class Matricula{
-    constructor( nome_do_aluno, nome_do_pai, nome_da_mae, cpf_aluno, carteira_de_identidade, matricula_certidao_nas_ou_cas,
-        endereco, telefone_residencial, celular, telefone_pai, telefone_mae, email_estudante, email_responsavel){
+    constructor( nome_do_aluno, data_de_nascimento, nome_do_pai, nome_da_mae, cpf_aluno, carteira_de_identidade, matricula_certidao_nas_ou_cas,endereco, telefone_residencial, celular, telefone_pai, telefone_mae, email_estudante, email_responsavel){
             this.nome_do_aluno = nome_do_aluno
+            this.data_de_nascimento = data_de_nascimento
             this.nome_do_pai = nome_do_pai
             this.nome_da_mae = nome_da_mae
             this.cpf_aluno = this._validaCpf(cpf_aluno)

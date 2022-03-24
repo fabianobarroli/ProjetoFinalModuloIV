@@ -1,13 +1,13 @@
 import sqlite3 from "sqlite3";
 sqlite3.verbose()
-import {dirname} from 'path';
+import { dirname } from 'path';
 import { fileURLToPath } from "url";
-const filePath = dirname(fileURLToPath(import.meta.url)) + '/bancoDeDadosMatricula.db';
+const filePath = dirname(fileURLToPath(import.meta.url)) + '/bancoDeDadosMatricula.db'
 const bdm = new sqlite3.Database(filePath);
 
 const MATRICULA_SCHEMA = `
-CREATE TABLE IF NOT EXISTS "MATRICULA" (
-    "ID" INTERGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE IF NOT EXISTS MATRICULA (
+    "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
     "NOME_DO_ALUNO" VARCHAR(255),
     "DATA_DE_NASCIMENTO" DATE,
     "NOME_DO_PAI" VARCHAR(255),
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS "MATRICULA" (
     "TELEFONE_MAE" VARCHAR(14),
     "EMAIL_ESTUDANTE" VARCHAR(100),
     "EMAIL_RESPONSAVEL" VARCHAR(100)
-);`;
+)`;
 
 const ADD_USUARIOS_DATA = `
 INSERT INTO MATRICULA (ID, NOME_DO_ALUNO, NOME_DO_PAI, NOME_DA_MAE, 
@@ -36,24 +36,31 @@ VALUES
 (3, 'Januária do Brasil', 'Pedro de Alcântara Bragança', 'Maria Leopoldina da Áustria', '555.111.333-99', '17155588', '11819501552010147896924636797131',
 'Palácio Imperial de São Cristóvão, Rio de Janeiro, RJ - Brasil', '2134915708', '31999991101', '21988774455', '21988774456', 'januaria@imperiodobrasil.br', 'pedroi@imperiodobrasil.br'),
 (4, 'Paula do Brasil', 'Pedro de Alcântara Bragança', 'Maria Leopoldina da Áustria', '558.111.333-99', '17155688', '27595401552020184621741544915712',
-'Palácio Imperial de São Cristóvão, Rio de Janeiro, RJ - Brasil', '2134915708', '31999991102', '21988774455', '21988774456', 'paula@imperiodobrasil.br', 'pedroi@imperiodobrasil.br'),
+'Palácio Imperial de São Cristóvão, Rio de Janeiro, RJ - Brasil', '2134915708', '31999991102', '21988774455', '21988774456', 'paula@imperiodobrasil.br', 'pedroi@imperiodobrasil.br')
 `
 
-function criarTabelaMatricula(){
-    bdm.run(MATRICULA_SCHEMA, (error)=>{
-        if(error) 
-        console.log("Erro ao criar a tabela de Matrícula!");
+function criarTabelaMatricula() {
+    bdm.run(MATRICULA_SCHEMA, (error) => {
+        if (error)
+            console.log({
+                error: error.message,
+                message: "Erro ao criar a tabela de Matrícula!"
+            }
+            );
     });
 }
 
-function popularTabelaMatricula(){
-    bdm.run(ADD_USUARIOS_DATA, (error)=>{
-        if(error) 
-        console.log("Erro ao popular a tabela de Matrícula!");
-    }); 
+function popularTabelaMatricula() {
+    bdm.run(ADD_USUARIOS_DATA, (error) => {
+        if (error)
+            console.log({
+                error: error.message,
+                message: "Erro ao popular a tabela de Matrícula!"
+            });
+    });
 }
 
-bdm.serializa(()=>{
+bdm.serialize(() => {
     criarTabelaMatricula();
     popularTabelaMatricula()
 });
