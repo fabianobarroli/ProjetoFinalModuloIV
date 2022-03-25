@@ -1,4 +1,5 @@
 class Matricula{
+
     constructor( nome_do_aluno, data_de_nascimento, nome_do_pai, nome_da_mae, cpf_aluno, carteira_de_identidade, matricula_certidao_nas_ou_cas,endereco, telefone_residencial, celular, telefone_pai, telefone_mae, email_estudante, email_responsavel){
             this.nome_do_aluno = nome_do_aluno
             this.data_de_nascimento = data_de_nascimento
@@ -14,10 +15,13 @@ class Matricula{
             this.telefone_mae = this._validaTelefoneMae(telefone_mae)
             this.email_estudante = this._validaEmailEstudante(email_estudante)
             this.email_responsavel = this._validaEmailResponsavel(email_responsavel)
+            
     }
 
+      
         _validaCpf = (cpf_aluno)=>{
             if(cpf_aluno.length === 14){
+                console.log(cpf_aluno)
                 return cpf_aluno
             }else{
                 throw new Error("O CPF deve ser no seguinte formato 111.111.111-11 números, gentileza digitar com pontos e o traço!")
@@ -78,6 +82,7 @@ class Matricula{
                 throw new Error("O deve conter @ !")
             }
         }
+    
 }
 
 export default Matricula

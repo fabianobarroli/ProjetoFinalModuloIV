@@ -37,8 +37,21 @@ class MatriculaDAO {
 
     inserirMatricula = (novaMatricula) => {
         return new Promise((resolve, reject) => {
-            this.bdm.all('INSERT INTO MATRICULA ( NOME_DO_ALUNO, NOME_DO_PAI, NOME_DA_MAE, CPF_ALUNO, CARTEIRA_DE_IDENTIDADE, MATRICULA_CERTIDAO_DE_NAS_OU_CAS, ENDERECO, TELEFONE_RESIDENCIAL, CELULAR, TELEFONE_PAI, TELEFONE_MAE, EMAIL_ESTUDANTE, EMAIL_RESPONSAVEL) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',
-                novaMatricula.nome_do_aluno, novaMatricula.nome_do_pai, novaMatricula.nome_da_mae, novaMatricula.cpf_aluno, novaMatricula.carteira_de_identidade, novaMatricula.matricula_certidao_nas_ou_cas,
+            this.bdm.all(`INSERT INTO MATRICULA (NOME_DO_ALUNO,
+                 DATA_DE_NASCIMENTO, 
+                 NOME_DO_PAI, 
+                 NOME_DA_MAE, 
+                 CPF_ALUNO,
+                 CARTEIRA_DE_IDENTIDADE, 
+                 MATRICULA_CERTIDAO_DE_NAS_OU_CAS, 
+                 ENDERECO, 
+                 TELEFONE_RESIDENCIAL,
+                 CELULAR, 
+                 TELEFONE_PAI,
+                 TELEFONE_MAE, 
+                 EMAIL_ESTUDANTE,
+                 EMAIL_RESPONSAVEL) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+                novaMatricula.nome_do_aluno, novaMatricula.data_de_nascimento, novaMatricula.nome_do_pai, novaMatricula.nome_da_mae, novaMatricula.cpf_aluno, novaMatricula.carteira_de_identidade, novaMatricula.matricula_certidao_nas_ou_cas,
                 novaMatricula.endereco, novaMatricula.telefone_residencial, novaMatricula.celular, novaMatricula.telefone_pai, novaMatricula.telefone_mae, novaMatricula.email_estudante, novaMatricula.email_responsavel,
                 (error) => {
                     if (error) {
@@ -71,25 +84,24 @@ class MatriculaDAO {
         })
     }
 
-    atualizaMatricula = (cpf_aluno, Matricula, ID) => {
-        console.log("assa")
+    atualizaMatricula = (cpf_aluno,novaMatricula) => {
         return new Promise((resolve, reject) => {
-            this.bdm.run(`UPDATE MATRICULA SET (ID, 
-                NOME_DO_ALUNO, 
+            this.bdm.run(`UPDATE MATRICULA SET (NOME_DO_ALUNO,
                 DATA_DE_NASCIMENTO, 
                 NOME_DO_PAI, 
                 NOME_DA_MAE, 
-                CPF_ALUNO, 
+                CPF_ALUNO,
                 CARTEIRA_DE_IDENTIDADE, 
-                MATRICULA_CERTIDAO_DE_NAS_OU_CAS,
+                MATRICULA_CERTIDAO_DE_NAS_OU_CAS, 
                 ENDERECO, 
-                TELEFONE_RESIDENCIAL, 
+                TELEFONE_RESIDENCIAL,
                 CELULAR, 
-                TELEFONE_PAI, 
+                TELEFONE_PAI,
                 TELEFONE_MAE, 
-                EMAIL_ESTUDANTE, 
-                EMAIL_RESPONSAVEL) = (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) WHERE CPF_ALUNO = ?`,
-                [ID, ...Object.values(Matricula),cpf_aluno], (error) => {
+                EMAIL_ESTUDANTE,
+                EMAIL_RESPONSAVEL) = (?,?,?,?,?,?,?,?,?,?,?,?,?,?) WHERE CPF_ALUNO = ?`,
+                novaMatricula.nome_do_aluno, novaMatricula.data_de_nascimento, novaMatricula.nome_do_pai, novaMatricula.nome_da_mae, novaMatricula.cpf_aluno, novaMatricula.carteira_de_identidade, novaMatricula.matricula_certidao_nas_ou_cas,
+                    novaMatricula.endereco, novaMatricula.telefone_residencial, novaMatricula.celular, novaMatricula.telefone_pai, novaMatricula.telefone_mae, novaMatricula.email_estudante, novaMatricula.email_responsavel, cpf_aluno, (error) => {
                     if (error) {
                         reject({
                             "mensagem": error.message
