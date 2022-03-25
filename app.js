@@ -9,4 +9,5 @@ app.use(cors())
 
 app.use(express.json())
 matriculaController(app, bancoDeDadosMatricula)
+
 export default app
