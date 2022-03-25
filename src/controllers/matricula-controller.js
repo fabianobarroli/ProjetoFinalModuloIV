@@ -32,7 +32,7 @@ const matriculaController = (app, bdm) => {
                 body.endereco, body.telefone_residencial, body.celular, body.telefone_pai, body.telefone_mae, body.email_estudante, body.email_responsavel)
             const resposta = await matriculaDAO.inserirMatricula(novaMatricula)
             res.status(201)
-            res.json({ msg: resposta, aluno: novaMatricula, erro: false })
+            res.json({resposta})
         } catch (error) {
             res.json(error.message)
         }
