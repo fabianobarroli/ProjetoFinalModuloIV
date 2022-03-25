@@ -84,7 +84,7 @@ class MatriculaDAO {
         })
     }
 
-    atualizaMatricula = (cpf_aluno,novaMatricula) => {
+    atualizaMatricula = (cpf_aluno, novaMatricula) => {
         return new Promise((resolve, reject) => {
             this.bdm.run(`UPDATE MATRICULA SET (NOME_DO_ALUNO,
                 DATA_DE_NASCIMENTO, 
@@ -101,7 +101,7 @@ class MatriculaDAO {
                 EMAIL_ESTUDANTE,
                 EMAIL_RESPONSAVEL) = (?,?,?,?,?,?,?,?,?,?,?,?,?,?) WHERE CPF_ALUNO = ?`,
                 novaMatricula.nome_do_aluno, novaMatricula.data_de_nascimento, novaMatricula.nome_do_pai, novaMatricula.nome_da_mae, novaMatricula.cpf_aluno, novaMatricula.carteira_de_identidade, novaMatricula.matricula_certidao_nas_ou_cas,
-                    novaMatricula.endereco, novaMatricula.telefone_residencial, novaMatricula.celular, novaMatricula.telefone_pai, novaMatricula.telefone_mae, novaMatricula.email_estudante, novaMatricula.email_responsavel, cpf_aluno, (error) => {
+                novaMatricula.endereco, novaMatricula.telefone_residencial, novaMatricula.celular, novaMatricula.telefone_pai, novaMatricula.telefone_mae, novaMatricula.email_estudante, novaMatricula.email_responsavel, cpf_aluno, (error) => {
                     if (error) {
                         reject({
                             "mensagem": error.message
